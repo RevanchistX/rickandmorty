@@ -2,7 +2,7 @@
   "name": "rick-and-morty-v2",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
+  "type": "commonjs",
   "main": "api/index.cjs",
   "scripts": {
     "start": "node api/index.cjs",
