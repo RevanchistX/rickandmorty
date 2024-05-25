@@ -3,7 +3,11 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/."
+      "destination": "/app"
+    },
+    {
+      "source": "/views",
+      "destination": "/app/views"
     }
   ]
 }
