@@ -1,7 +1,6 @@
-import express from "express"
-import axios from "axios"
-import bodyParser from "body-parser"
-
+const express = require('express');
+const axios = require('axios');
+const bodyParser = require('body-parser');
 
 
 const app = express();
@@ -9,29 +8,18 @@ const port = 3000;
 const API_URL = "https://rickandmortyapi.com/api";
 
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/", (req, res) => {
     res.render("index.ejs");
 });
-
-// app.get('/characters', async (req, res) => {
-//     try {
-//         const response = await axios.get(API_URL + '/character');
-//         const characters = response.data.results;
-//         res.render('characters.ejs', { characters });
-//     } catch (error) {
-//         console.error('Error fetching characters:', error.message);
-//         res.status(500).send('Error fetching characters');
-//     }
-// });
 
 app.get('/characters', async (req, res) => {
     try {
         const page = req.query.page || 1; // Get the page parameter from the query, default to page 1
         const response = await axios.get(`${API_URL}/character?page=${page}`);
         const characters = response.data.results;
-        res.render('characters.ejs', { characters });
+        res.render('characters.ejs', {characters});
     } catch (error) {
         console.error('Error fetching characters:', error.message);
         res.status(500).send('Error fetching characters');
@@ -43,7 +31,7 @@ app.get('/characters/:id', async (req, res) => {
         const characterId = req.params.id;
         const response = await axios.get(`${API_URL}/character/${characterId}`);
         const character = response.data; // Assuming the API returns the character directly
-        res.render('characterDetails.ejs', { character });
+        res.render('characterDetails.ejs', {character});
     } catch (error) {
         console.error('Error fetching character details:', error.message);
         res.status(500).send('Error fetching character details');
@@ -81,7 +69,7 @@ app.get('/episodes', async (req, res) => {
             seasons[season].push(episode);
         });
 
-        res.render('episodes.ejs', { seasons });
+        res.render('episodes.ejs', {seasons});
     } catch (error) {
         console.error('Error fetching episodes:', error.message);
         res.status(500).send('Error fetching episodes');
@@ -89,13 +77,11 @@ app.get('/episodes', async (req, res) => {
 });
 
 
-
-
 app.get('/locations', async (req, res) => {
     try {
         const response = await axios.get(API_URL + '/location');
         const locations = response.data.results;
-        res.render('locations.ejs', { locations });
+        res.render('locations.ejs', {locations});
     } catch (error) {
         console.error('Error fetching locations:', error.message);
         res.status(500).send('Error fetching locations');

@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "type": "commonjs",
-  "main": "api/index.cjs",
+  "main": "api/index.js",
   "scripts": {
-    "start": "node api/index.cjs",
-    "dev": "nodemon api/index.cjs"
+    "start": "node api/index.js",
+    "dev": "nodemon api/index.js"
   },
   "keywords": [],
   "author": "",
