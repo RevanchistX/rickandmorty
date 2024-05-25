@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "type": "commonjs",
-  "main": "app/index.js",
+  "main": "app/index.ts",
   "scripts": {
-    "start": "node app/index.js",
-    "dev": "nodemon app/index.js"
+    "start": "node app/index.ts",
+    "dev": "nodemon app/index.ts"
   },
   "keywords": [],
   "author": "",
